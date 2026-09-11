@@ -777,6 +777,47 @@
     border: none;
   }
   .about-container h3.hist-headline + .about-subtitle { margin-bottom: 0.8rem; font-size: 0.88rem; }
+  /* About intro: compact, text left, small square photo right */
+  .about-intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 375px;   /* ~2/3 text, ~1/3 photo */
+    gap: 2.5rem;
+    align-items: start;
+    margin: 0 0 0.5rem;
+  }
+  /* About page: left-aligned with the page grid (not centred). The intro uses
+     the full 1080px; everything below keeps a readable ~820px measure. */
+  #about .about-container {
+    max-width: none;
+    margin: 1.6rem 0 2rem;
+    padding: 0 var(--pad);
+  }
+  #about .about-container > * { max-width: 820px; }
+  #about .about-container > .about-intro { max-width: 1080px; }
+  #about .about-positioning { color: #5a5f69; margin-top: -0.3rem; }
+  #about .about-figure { margin: 1.6rem 0 0.5rem; }
+  #about .about-figure img { display: block; width: 100%; height: auto; border: 1px solid var(--hair); }
+  #about .about-figure figcaption { margin-top: 0.5rem; font-size: 0.92rem; line-height: 1.55; color: #4a4f59; }
+  #about .about-figure figcaption strong { color: var(--ink); font-weight: 600; }
+  #about .about-intro strong, #about .about-container > p strong { font-weight: 600; color: var(--ink); }
+  @media (max-width: 1000px) {
+    .about-intro { grid-template-columns: minmax(0, 1fr) 250px; }
+  }
+  .about-container .about-kicker {
+    font-size: 0.8rem; font-weight: 600; color: var(--accent);
+    text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 0.6rem;
+  }
+  .about-intro p { margin-bottom: 0.56rem; line-height: 1.65; }
+  .about-intro .about-key { font-weight: 600; color: var(--ink); }
+  .about-intro .about-contact { margin-top: 0.8rem; color: #6a6f7a; font-weight: 400; }
+  .about-intro-photo {
+    display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: cover;
+    border: 1px solid var(--hair); margin-top: 0.3rem;
+  }
+  @media (max-width: 700px) {
+    .about-intro { grid-template-columns: 1fr; gap: 1rem; }
+    .about-intro-photo { width: min(100%, 300px); }
+  }
   .about-container h3 {
     font-size: 1.15rem;
     color: #333;
@@ -848,7 +889,7 @@
       <div class="mast-brand">Ericeira Real Estate</div>
       <div class="mast-sub"><span class="mast-title">Property Market Pulse</span>
         <span class="mast-meta">Asking prices per m&sup2; of actual living space &middot; Sep 2026 &middot; 449 listings
-        &middot; updated Sep 11, 2026, 18:10</span></div>
+        &middot; updated Sep 11, 2026, 18:59</span></div>
     </div>
   </div>
   <nav class="top-tabs">
@@ -1093,53 +1134,46 @@
 
   <!-- EN -->
   <div class="about-container lang-en">
-    <h2>Ericeira Market Lens</h2>
-    <div class="about-subtitle">A data-driven briefing on the Ericeira real estate market</div>
-
-    <p>
-      This dashboard aggregates and visualises public listing data from
-      <strong>Idealista</strong> for properties in the Ericeira area.
-      It is designed to give a structured, at-a-glance overview of
-      what is currently on the market, prices, surfaces, typologies,
-      agencies, and space efficiency.
-    </p>
-
-    <div class="disclaimer">
-      <strong>Disclaimer:</strong> This is not a valuation tool, a price
-      forecast, or financial advice. All data comes from public listings
-      and reflects <em>asking prices</em>, not transaction prices.
-      Listings may contain errors, duplicates, or outdated information.
-    </div>
+    <!-- ── About intro: text left, photo right ── -->
+    <section class="about-intro">
+      <div class="about-intro-text">
+        <h2 class="about-kicker">About Erireal</h2>
+        <p>I live in Ericeira and started digging into the property market while planning my own house project.</p>
+        <p>I found an <strong>opaque market</strong>: misleading ads, unreliable information, little transparency and properties
+           that are surprisingly difficult to compare.</p>
+        <p><strong>I built Erireal to decipher it.</strong></p>
+        <p>The KPIs show <strong>what the market is actually doing</strong>. The tools help you <strong>navigate listings quickly</strong>,
+           explore them on a map and <strong>spot unusually well priced properties per m&sup2;</strong>.</p>
+        <p>I&rsquo;m Seb, a portfolio manager and data analyst living in Ericeira. Erireal is an independent personal project.</p>
+        <p class="about-contact">Contact: smaillard75 [at] gmail [dot] com</p>
+      </div>
+      <img class="about-intro-photo" src="dog_car_window.png"
+           alt="Dog looking out of a car window, Ericeira in the background" loading="lazy">
+    </section>
 
     <h3>An opaque market</h3>
     <p>
-      The Portuguese real estate market, and Ericeira in particular,
-      is notoriously opaque. Transaction prices are rarely published,
-      agency commissions vary widely, and reliable comparable data is
-      hard to find. Buyers, sellers, and even professionals often
-      navigate with limited visibility.
+      The Portuguese real estate market, and Ericeira in particular, is opaque. Transaction prices are rarely
+      published, listings can be misleading, and reliable comparable data is hard to find. <strong>Even price per m&sup2;
+      can be deceptive</strong>, as advertised area often includes garages, terraces, storage and other space that is not
+      actual living space.
     </p>
     <p>
-      This project aims to reduce that asymmetry by making the publicly
-      available listing data more accessible, structured, and comparable.
-      It does not replace professional advice, but it provides a
-      starting point for informed conversations.
+      Erireal aims to cut through that noise by structuring public listing data and extracting <strong>&Aacute;rea &Uacute;til,
+      the actual living space</strong>, wherever available. This makes properties easier to compare and provides a clearer
+      view of <strong>what you are actually paying per m&sup2; of living space</strong>.
     </p>
+
+    <figure class="about-figure">
+      <img src="area_util_vs_bruta.png" alt="Floor plan: Área Útil (living space) in green, garage and terrace counted in Área Bruta in red" loading="lazy">
+      <figcaption><strong>&Aacute;rea &Uacute;til vs &Aacute;rea Bruta.</strong> Green: &Aacute;rea &Uacute;til, the actual living space.
+        Red: space counted in the advertised &Aacute;rea Bruta that is not living space.</figcaption>
+    </figure>
 
     <h3>For whom?</h3>
-    <ul>
-      <li><strong>Buyers</strong> looking to understand the current supply and relative pricing</li>
-      <li><strong>Sellers</strong> wanting to position their property against the market</li>
-      <li><strong>Agents &amp; advisors</strong> who need a quick market snapshot</li>
-      <li><strong>Curious minds</strong> interested in Ericeira real estate dynamics</li>
-    </ul>
-
-    <p class="closing">
-      The focus is on relative positioning, not absolute truth.<br>
-      See where a property stands compared to others, not what it is "worth".
-    </p>
-
-    <img src="area_util_vs_bruta.png" alt="Useful area vs gross area" style="max-width:100%;margin-top:1.5rem;border-radius:8px;">
+    <p><strong>For buyers, sellers, agents and curious minds</strong> looking for a clearer view of the Ericeira property market.</p>
+    <p class="about-positioning"><em>The focus is on relative positioning, not absolute truth. See where a property
+       stands compared with others, not what it is &ldquo;worth&rdquo;.</em></p>
 
     <!-- ── Methodology ── -->
     <div class="method" id="methodology">
