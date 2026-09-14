@@ -43,6 +43,9 @@
     border-bottom: 1px solid var(--rule);
   }
   .mast-left { display: flex; align-items: center; gap: 0.7rem; min-width: 0; }
+  /* the logo and the brand line go back to the Insights homepage */
+  a.mast-home { color: inherit; text-decoration: none; display: inline-block; }
+  a.mast-home:hover { opacity: 0.82; }
   .mast-mark {
     height: 44px; width: auto; flex: 0 0 auto;
     /* tint the white statue silhouette to the brand blue */
@@ -935,6 +938,38 @@
     text-align: center;
   }
 
+  /* ── Contact form (About page) ── */
+  .contact-block { margin-top: 2rem; }
+  .contact-form { max-width: 560px; margin-top: 0.9rem; }
+  .cf-row { display: flex; gap: 0.8rem; }
+  .cf-row label { flex: 1; }
+  .contact-form label {
+    display: block; font-size: 0.78rem; font-weight: 600; color: #4a4f59;
+    letter-spacing: 0.02em; margin-bottom: 0.7rem;
+  }
+  .contact-form input[type=text], .contact-form input[type=email], .contact-form textarea {
+    display: block; width: 100%; margin-top: 0.25rem;
+    font: inherit; font-size: 0.92rem; font-weight: 400; color: var(--ink);
+    padding: 0.45rem 0.6rem; border: 1px solid var(--border); border-radius: 5px;
+    background: #fff; box-sizing: border-box;
+  }
+  .contact-form textarea { resize: vertical; line-height: 1.5; }
+  .contact-form input:focus, .contact-form textarea:focus {
+    outline: none; border-color: var(--accent); box-shadow: 0 0 0 2px rgba(0,47,167,0.09);
+  }
+  .cf-honey { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+  .cf-send { display: flex; align-items: center; gap: 0.8rem; }
+  .contact-form button {
+    font: inherit; font-size: 0.88rem; font-weight: 600; color: #fff;
+    background: var(--accent); border: 0; border-radius: 5px;
+    padding: 0.45rem 1.1rem; cursor: pointer;
+  }
+  .contact-form button:hover { background: #00259a; }
+  .contact-form button[disabled] { opacity: 0.55; cursor: default; }
+  .cf-status { font-size: 0.85rem; color: var(--ink2); }
+  .cf-note { font-size: 0.8rem; color: #6a6f7a; margin-top: 0.7rem; }
+  @media (max-width: 560px) { .cf-row { display: block; } }
+
   .site-footer { border-top: 1px solid var(--hair); margin-top: 1.5rem; padding-top: 0.8rem; padding-bottom: 1.4rem;
                   font-size: 0.87rem; color: #6a6f7a; }
   .site-footer a { color: #4a4f59; text-decoration: underline; text-decoration-color: #c3c8d1; }
@@ -965,12 +1000,13 @@
 <!-- ═══ Masthead ═══ -->
 <header class="masthead">
   <div class="mast-left">
-    <img class="mast-mark" src="surfer_statue.png" alt="">
+    <a class="mast-home" href="#casas" aria-label="Back to the Insights homepage">
+      <img class="mast-mark" src="surfer_statue.png" alt=""></a>
     <div class="mast-text">
-      <div class="mast-brand">Ericeira Real Estate</div>
+      <div class="mast-brand"><a class="mast-home" href="#casas">Ericeira Real Estate</a></div>
       <div class="mast-sub"><span class="mast-title">Property Market Pulse</span>
         <span class="mast-meta">Asking prices per m&sup2; of actual living space &middot; Sep 2026 &middot; 449 listings
-        &middot; updated Sep 12, 2026, 17:07</span></div>
+        &middot; updated Sep 14, 2026, 11:42</span></div>
     </div>
   </div>
   <nav class="top-tabs">
@@ -1221,7 +1257,7 @@
         <p>The KPIs show <strong>what the market is actually doing</strong>. The tools help you <strong>navigate listings quickly</strong>,
            explore them on a map and <strong>spot unusually well priced properties per m&sup2;</strong>.</p>
         <p>I&rsquo;m Seb, a portfolio manager and data analyst living in Ericeira. Erireal is an independent personal project.</p>
-        <p class="about-contact">Contact: smaillard75 [at] gmail [dot] com</p>
+        <p class="about-contact"><a href="#contact" class="contact-link">Get in touch &rarr;</a></p>
       </div>
       <img class="about-intro-photo" src="dog_car_window.png"
            alt="Dog looking out of a car window, Ericeira in the background" loading="lazy">
@@ -1316,6 +1352,8 @@
             Listings already online in Dec '25 may have been listed earlier.</dd>
       </dl>
     </div>
+
+    <section id="contact" class="contact-block"><h3>Get in touch</h3><p>A question, a correction, a listing that looks wrong, or just the Ericeira market to talk about &mdash; write to me.</p><form class="contact-form" id="contact-form" action="https://formsubmit.co/ajax/smaillard75@gmail.com" method="POST"><div class="cf-row"><label>Name<input type="text" name="name" autocomplete="name"></label><label>Email<input type="email" name="email" required autocomplete="email"></label></div><label>Message<textarea name="message" rows="5" required></textarea></label><input type="hidden" name="_subject" value="Erireal — message from the website"><input type="hidden" name="_captcha" value="false"><input type="text" name="_honey" class="cf-honey" tabindex="-1" autocomplete="off" aria-hidden="true"><div class="cf-send"><button type="submit">Send message</button><span class="cf-status" role="status"></span></div><p class="cf-note">I read everything and answer when I can. You can also write to <a class="mail-link" data-show-addr="1" href="#">me</a>.</p></form></section>
   </div>
 
 </div>
@@ -1325,6 +1363,7 @@
   Ericeira Real Estate &middot; Property Market Pulse &middot; Public Idealista listings, asking prices, not transaction prices
   &middot; <a href="#methodology" class="method-link">Methodology</a>
   &middot; <a href="#about" class="nav-link" data-tab-target="about">About</a>
+  &middot; <a href="#contact" class="contact-link">Contact</a>
 </footer>
 
 <!-- Hover photo panel -->
@@ -1467,6 +1506,78 @@
       }, 60);
     });
   });
+
+  // Masthead: back to the Casas tab on its Insights section, from anywhere
+  document.querySelectorAll('a.mast-home').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      activateTopTab('casas');
+      activateCasasSection('casas-insights');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+
+  // ── Contact ──
+  // The address is assembled here rather than written in the page, so the
+  // usual address harvesters do not pick it up from the HTML.
+  const CONTACT_MAIL = "smaillard75@gmail.com";
+  const CONTACT_ENDPOINT = "https://formsubmit.co/ajax/smaillard75@gmail.com";
+  document.querySelectorAll('a.mail-link').forEach(a => {
+    a.href = 'mailto:' + CONTACT_MAIL;
+    if (a.dataset.showAddr) a.textContent = CONTACT_MAIL;
+  });
+  document.querySelectorAll('.contact-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      activateTopTab('about');
+      setTimeout(() => {
+        const c = document.getElementById('contact');
+        if (c) c.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 60);
+    });
+  });
+
+  const cForm = document.getElementById('contact-form');
+  if (cForm) {
+    const cStatus = cForm.querySelector('.cf-status');
+    const cBtn = cForm.querySelector('button');
+    cForm.addEventListener('submit', async (e) => {
+      if (cForm.querySelector('[name=_honey]').value) { e.preventDefault(); return; }
+      // No relay configured: a static host cannot receive the message itself,
+      // so hand it to the visitor's mail app with everything filled in.
+      if (!CONTACT_ENDPOINT) {
+        e.preventDefault();
+        const f = new FormData(cForm);
+        const body = 'From: ' + (f.get('name') || '') + ' <' + (f.get('email') || '') + '>'
+                   + String.fromCharCode(10, 10) + (f.get('message') || '');
+        window.location.href = 'mailto:' + CONTACT_MAIL
+          + '?subject=' + encodeURIComponent('Erireal — message from the website')
+          + '&body=' + encodeURIComponent(body);
+        cStatus.textContent = 'Opening your email app…';
+        return;
+      }
+      e.preventDefault();
+      cBtn.disabled = true;
+      cStatus.textContent = 'Sending…';
+      try {
+        const r = await fetch(CONTACT_ENDPOINT, {
+          method: 'POST', body: new FormData(cForm), headers: {'Accept': 'application/json'}
+        });
+        let j = null;
+        try { j = await r.json(); } catch (err) {}
+        if (!r.ok || (j && j.success === 'false')) {
+          // the relay answers with its own message (e.g. confirm your address)
+          throw new Error((j && j.message) || 'send failed');
+        }
+        cForm.reset();
+        cStatus.textContent = 'Thank you — your message is on its way.';
+      } catch (err) {
+        cStatus.textContent = 'Could not send (' + err.message + '). Please write to '
+                            + CONTACT_MAIL + '.';
+      }
+      cBtn.disabled = false;
+    });
+  }
 
   // ── Scatter & Map hover photo + click-to-open ──
   const hoverPanel = document.getElementById('hover-panel');
