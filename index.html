@@ -829,7 +829,11 @@
      baked into the plot (that used to render as its own white bar). On the
      "All listings" map it shares the toggle's row, centred in the space
      beside it, instead of taking a row of its own. */
-  .map-caption { margin: 0.9rem 0 0.5rem 2px; }
+  /* Centred everywhere: the "All listings" map shares its row with the area
+     toggle (handled below), the other four have the row to themselves, but
+     the text itself is centred either way so the look never changes between
+     tabs. */
+  .map-caption { margin: 0.9rem 0 0.5rem; text-align: center; }
   .map-caption-title {
     font-family: var(--serif); font-size: 1.05rem; font-weight: 600; color: var(--ink);
   }
@@ -845,7 +849,7 @@
   @media (max-width: 800px) {
     /* not enough width to share the row: back to its own line above the map */
     .map-act-panel[data-act-panel="all"] .map-caption {
-      position: static; max-width: none; text-align: left; margin: 0.9rem 0 0.5rem 2px;
+      position: static; max-width: none; margin: 0.9rem 0 0.5rem;
     }
   }
 
@@ -1192,7 +1196,7 @@
 <!-- ═══ Masthead ═══ -->
 <header class="masthead">
   <div class="mast-side">
-    <span class="mast-eyebrow">Updated Sep 18, 2026, 11:34</span>
+    <span class="mast-eyebrow">Updated Sep 18, 2026, 13:36</span>
     <span class="mast-note">449 homes for sale in Ericeira</span>
   </div>
   <div class="mast-centre">
@@ -1575,6 +1579,18 @@
         const isVisible = el.offsetParent !== null;
         if (isVisible) {
           Plotly.Plots.resize(el);
+          // Mapbox GL keeps its own WebGL canvas separate from the SVG
+          // Plotly.Plots.resize() fixes. A map that was first drawn while its
+          // panel was display:none (any inactive tab) initialises that canvas
+          // at zero size, and the generic resize above does not repaint it,
+          // leaving a blank/white map until this runs. Nudge Mapbox's own
+          // resize directly whenever this element is a map.
+          const mb = el._fullLayout && el._fullLayout.mapbox
+                    && el._fullLayout.mapbox._subplot && el._fullLayout.mapbox._subplot.map;
+          if (mb) {
+            mb.resize();
+            setTimeout(() => mb.resize(), 200);   // once more after layout settles
+          }
         }
       });
       window.dispatchEvent(new Event('resize'));
