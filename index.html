@@ -1250,7 +1250,7 @@
 <!-- ═══ Masthead ═══ -->
 <header class="masthead">
   <div class="mast-side">
-    <span class="mast-eyebrow">Updated Sep 21, 2026, 17:39</span>
+    <span class="mast-eyebrow">Updated Sep 21, 2026, 18:16</span>
     <span class="mast-note">449 homes for sale</span>
   </div>
   <div class="mast-centre">
@@ -1872,23 +1872,35 @@
   // providers later means changing subscribeToNewsletter(), nothing else.
   // Buttondown's subscribe endpoint takes a username, not a secret key, so
   // calling it directly from the browser never exposes anything private.
-  const NEWSLETTER_USERNAME = "";
+  const NEWSLETTER_USERNAME = "erireal";
+  // Tags every subscriber with metadata__source so they stay distinguishable
+  // in Buttondown if this account ever sends for another site too.
+  const NEWSLETTER_SOURCE = "erireal";
   async function subscribeToNewsletter(email) {
     if (!NEWSLETTER_USERNAME) {
       throw new Error('Sign-up is not open yet. Please check back soon.');
     }
+    const body = 'email=' + encodeURIComponent(email)
+               + '&metadata__source=' + encodeURIComponent(NEWSLETTER_SOURCE);
     const r = await fetch('https://buttondown.com/api/emails/embed-subscribe/' + NEWSLETTER_USERNAME, {
       method: 'POST',
-      headers: {'Content-Type': 'application/x-www-form-urlencoded', 'Accept': 'application/json'},
-      body: 'email=' + encodeURIComponent(email),
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      body: body,
     });
-    if (r.ok) return;
-    let msg = 'Could not sign up. Please try again.';
-    try {
-      const j = await r.json();
-      if (j && (j.email || j.detail)) msg = String(j.email || j.detail);
-    } catch (err) {}
-    throw new Error(msg);
+    // This endpoint is Buttondown's own recommended one (CORS-open by design,
+    // confirmed against the live account: no key needed, no CORS failure),
+    // but it is built for classic browser navigation, not a JSON API: it
+    // answers with an HTML page or a redirect, and a brand-new address (one
+    // pending Buttondown's own double opt-in email) gets the same HTTP 400
+    // status as a genuinely invalid one, so the status code alone cannot
+    // tell success from failure. An address Buttondown already knows
+    // confirmed redirects straight to state=confirmed_subscription; anything
+    // else is success unless the page is Buttondown's own error page.
+    if (r.redirected && /state=confirmed_subscription/.test(r.url)) return;
+    const text = await r.text();
+    if (!/Subscription Error/i.test(text)) return;
+    const m = text.match(/message-box--error"[^>]*>\s*([^<]+)/i);
+    throw new Error(m ? m[1].trim() : 'Could not sign up. Please try again.');
   }
 
   const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
