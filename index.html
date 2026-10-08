@@ -215,6 +215,43 @@
   /* Editorial tab explanations: hover (300 ms delay) or keyboard focus, mouse devices only */
   .section-tab { position: relative; }
   .tab-tip { display: none; }
+
+  /* ── "And also" dropdown in the section tab bar ── */
+  .section-more { position: relative; }
+  .more-btn {
+    padding: 0.55rem 0 0.45rem; cursor: pointer; white-space: nowrap;
+    font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em;
+    color: #3f444d; border-bottom: 2px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .more-caret { font-size: 0.75em; margin-left: 0.15rem; }
+  .more-btn:hover, .section-more:focus-within .more-btn { color: var(--accent); }
+  .section-more.has-active .more-btn { color: var(--accent); font-weight: 600; border-bottom-color: var(--accent); }
+  .more-menu {
+    display: none; position: absolute; top: 100%; left: 0; z-index: 95; min-width: 300px;
+    background: #fff; border: 1px solid var(--hair); box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  }
+  .section-more:hover .more-menu, .section-more:focus-within .more-menu { display: block; }
+  .section-more.shut .more-menu { display: none !important; }
+  .more-menu .section-tab {
+    display: block; padding: 0.65rem 0.95rem; border-bottom: none; text-transform: none;
+    letter-spacing: 0; font-size: 0.92rem; white-space: normal;
+  }
+  .more-menu .section-tab + .section-tab { border-top: 1px solid var(--hair); }
+  .more-menu .section-tab:hover { background: rgba(0, 47, 167, 0.05); }
+  .more-menu .section-tab.active { background: rgba(0, 47, 167, 0.07); border-bottom: none; }
+  .more-desc { display: block; margin-top: 0.15rem; font-size: 0.8rem; font-weight: 400; color: #5d626c; }
+  .more-menu .tab-tip { display: none !important; }
+  /* Touch screens have no hover: keep Agencies and Living Space as plain tabs in the bar */
+  @media (hover: none), (pointer: coarse) {
+    .more-btn { display: none; }
+    .section-more, .more-menu { display: contents; }
+    .more-menu { position: static; box-shadow: none; border: none; min-width: 0; }
+    .more-menu .section-tab { display: block; padding: 0.55rem 0 0.45rem; font-size: 0.82rem;
+      text-transform: uppercase; letter-spacing: 0.07em; border-top: none !important; white-space: nowrap; }
+    .more-menu .section-tab.active { background: none; border-bottom: 2px solid var(--accent); }
+    .more-desc { display: none; }
+  }
   @media (hover: hover) and (pointer: fine) {
     .section-tabs { overflow: visible; }          /* let the note hang below the bar */
     .tab-tip {
@@ -1300,7 +1337,7 @@
 <!-- ═══ Masthead ═══ -->
 <header class="masthead">
   <div class="mast-side">
-    <span class="mast-eyebrow">Updated Oct 08, 2026, 21:41</span>
+    <span class="mast-eyebrow">Updated Oct 08, 2026, 21:46</span>
     <span class="mast-note">435 homes for sale</span>
   </div>
   <div class="mast-centre">
@@ -1366,9 +1403,14 @@
     <div class="section-tab" data-target="casas-history" tabindex="0" aria-describedby="tip-history">History<span class="tab-tip" id="tip-history" role="tooltip"><strong>How has the market changed?</strong>See how the number of homes and their asking prices have changed each month.</span></div>
     <div class="section-tab" data-target="casas-map" tabindex="0" aria-describedby="tip-map">Map<span class="tab-tip" id="tip-map" role="tooltip"><strong>Where are the homes?</strong>See each listing on the map and compare its asking price.</span></div>
     <div class="section-tab" data-target="casas-zones" tabindex="0" aria-describedby="tip-zones">Zones<span class="tab-tip" id="tip-zones" role="tooltip"><strong>How do areas compare?</strong>See the asking prices in each part of the Mafra municipality.</span></div>
-    <div class="section-tab" data-target="casas-pricing" tabindex="0" aria-describedby="tip-pricing">What Affects Price<span class="tab-tip" id="tip-pricing" role="tooltip"><strong>Why do some homes cost more?</strong>Compare prices by size, age and outdoor space.</span></div>
-    <div class="section-tab" data-target="casas-agencies" tabindex="0" aria-describedby="tip-agencies">Agencies<span class="tab-tip" id="tip-agencies" role="tooltip"><strong>Which agencies have the most homes?</strong>See how many listings each agency has and their typical prices.</span></div>
-    <div class="section-tab" data-target="casas-efficiency" tabindex="0" aria-describedby="tip-efficiency">Living Space<span class="tab-tip" id="tip-efficiency" role="tooltip"><strong>How much space can you actually live in?</strong>Compare living space with the full advertised area.</span></div>
+    <div class="section-tab" data-target="casas-pricing" tabindex="0" aria-describedby="tip-pricing">What Affects Price<span class="tab-tip" id="tip-pricing" role="tooltip"><strong>Why do some homes cost more?</strong>Compare prices by size, age, outdoor space and distance to the sea.</span></div>
+    <div class="section-more" id="casas-more">
+      <div class="more-btn" tabindex="0" role="button" aria-haspopup="true">And also <span class="more-caret">&#9662;</span></div>
+      <div class="more-menu">
+        <div class="section-tab" data-target="casas-agencies" tabindex="0">Agencies<span class="more-desc">Which agencies have the most homes?</span></div>
+        <div class="section-tab" data-target="casas-efficiency" tabindex="0">Living Space<span class="more-desc">How much space can you actually live in?</span></div>
+      </div>
+    </div>
   </div>
 
   <!-- Section intro bubbles (below tabs): one line each, English only -->
@@ -1974,6 +2016,15 @@
     parent.querySelectorAll(':scope > .content > .section').forEach(s => s.classList.remove('active'));
     sectionTab.classList.add('active');
     section.classList.add('active');
+    const more = parent.querySelector('.section-more');
+    if (more) {
+      more.classList.toggle('has-active', !!more.querySelector('.section-tab.active'));
+      if (more.contains(sectionTab)) {
+        more.classList.add('shut');
+        more.addEventListener('mouseleave', () => more.classList.remove('shut'), { once: true });
+        if (document.activeElement && more.contains(document.activeElement)) document.activeElement.blur();
+      }
+    }
     parent.querySelectorAll('.section-intro-bubble').forEach(b => b.classList.remove('active'));
     const bubble = parent.querySelector('.section-intro-bubble[data-for="' + target + '"]');
     if (bubble) bubble.classList.add('active');
