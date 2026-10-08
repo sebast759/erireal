@@ -1300,7 +1300,7 @@
 <!-- ═══ Masthead ═══ -->
 <header class="masthead">
   <div class="mast-side">
-    <span class="mast-eyebrow">Updated Oct 08, 2026, 16:07</span>
+    <span class="mast-eyebrow">Updated Oct 08, 2026, 16:30</span>
     <span class="mast-note">435 homes for sale</span>
   </div>
   <div class="mast-centre">
@@ -1546,11 +1546,19 @@
 <div id="terrenos" class="tab-content" style="display:none;">
   
 <style>
-  .land-class-head { display:flex; align-items:baseline; gap:.6rem; padding:.9rem 2rem 0;
-    font-size:.82rem; font-weight:700; text-transform:uppercase; letter-spacing:.07em; color:#33373f; }
-  .land-dot { width:.7rem; height:.7rem; border-radius:50%; background:var(--cc); display:inline-block; }
-  .land-what { font-size:.78rem; font-weight:500; text-transform:none; letter-spacing:0; color:#5d626c; }
+  .land-grid { display:grid; grid-template-columns: 8.5rem repeat(4, minmax(8.5rem, 1fr)) minmax(12rem, 1.3fr);
+    column-gap:0; row-gap:0; padding:.55rem 2rem .4rem; align-items:stretch; overflow-x:auto; }
+  .land-grid > .kpi-label { padding:0 .6rem .35rem; border-bottom:1px solid var(--rule); }
+  .land-grid > .kpi { padding:.4rem .6rem .35rem; border-left:1px solid var(--hair); border-bottom:1px solid var(--hair); }
+  .land-grid > .land-rowhead { padding:.55rem .4rem 0 0; border-bottom:1px solid var(--hair); }
   .land-kpis { padding-top:.35rem; padding-bottom:.4rem; }
+  .land-rowhead { position:relative; display:flex; align-items:flex-start; gap:.5rem; cursor:help;
+    font-size:.82rem; font-weight:700; text-transform:uppercase; letter-spacing:.07em; color:#33373f; }
+  .land-dot { width:.7rem; height:.7rem; border-radius:50%; background:var(--cc); display:inline-block; margin-top:.2rem; flex:none; }
+  .land-tip { display:none; position:absolute; left:0; top:100%; z-index:80; width:15rem; padding:.55rem .7rem;
+    background:#fff; border:1px solid var(--rule); box-shadow:0 4px 14px rgba(0,0,0,.12);
+    font-size:.8rem; font-weight:400; text-transform:none; letter-spacing:0; line-height:1.4; color:#33373f; }
+  .land-rowhead:hover .land-tip, .land-rowhead:focus .land-tip { display:block; }
   .land-note { padding:.4rem 2rem .2rem; font-size:.82rem; color:#5d626c; max-width:1100px; }
   .land-hist-block { margin:1.4rem 0 .4rem; }
   .land-hist-block h4 { margin:0 0 .2rem; font-size:.95rem; color:var(--cc); }
@@ -1568,91 +1576,76 @@
   .land-panel .mapboxgl-canvas-container, .land-panel .mapboxgl-canvas { cursor:grab !important; }
   .land-section .table-wrap { overflow-x:auto; }
 </style>
-  
-  <div class="land-class-head" style="--cc:#2c7be5"><span class="land-dot"></span>Urban
-    <span class="land-what">Land already classified for building.</span></div>
-  <div class="kpi-row land-kpis">
+  <div class="land-grid"><div></div><div class="kpi-label">Plots for sale</div><div class="kpi-label">Median price per m&sup2;</div><div class="kpi-label">Median asking price</div><div class="kpi-label">Median plot size</div><div class="kpi-label">Price range</div>
+    <div class="land-rowhead" style="--cc:#2c7be5" tabindex="0">
+      <span class="land-dot"></span>Urban
+      <span class="land-tip" role="tooltip"><strong>Urban.</strong> Land already classified for building.</span>
+    </div>
     <div class="kpi kpi-main">
-      <div class="kpi-label">Urban plots for sale</div>
       <div class="kpi-value">221<span class="kpi-arrow up" title="vs Sep">&#8599;</span></div>
       <div class="stat-comp">216 (Sep)</div>
     </div>
     <div class="kpi kpi-main">
-      <div class="kpi-label">Median price per m&sup2;</div>
       <div class="kpi-value">&euro;253<span class="kpi-unit">/m&sup2;</span><span class="kpi-arrow down" title="vs Sep">&#8600;</span></div>
       <div class="stat-delta down">▼ -1.2% vs Sep</div>
     </div>
     <div class="kpi kpi-main">
-      <div class="kpi-label">Median asking price</div>
       <div class="kpi-value">&euro;215k<span class="kpi-arrow down" title="vs Sep">&#8600;</span></div>
       <div class="stat-delta down">▼ -0.7% vs Sep</div>
     </div>
-    <div class="kpi kpi-sec kpi-sec-first">
-      <div class="kpi-label">Median plot size</div>
+    <div class="kpi kpi-sec">
       <div class="kpi-value">845<span class="kpi-unit">m&sup2;</span><span class="kpi-arrow up" title="vs Sep">&#8599;</span></div>
       <div class="stat-delta up">▲ +8.9% vs Sep</div>
     </div>
     <div class="kpi kpi-sec">
-      <div class="kpi-label">Price range</div>
       <div class="kpi-value">&euro;12k to &euro;4.8M</div>
     </div>
-  </div>
-  <div class="land-class-head" style="--cc:#e25c2c"><span class="land-dot"></span>Urbanisable
-    <span class="land-what">Land that can be built on after a development process.</span></div>
-  <div class="kpi-row land-kpis">
+    <div class="land-rowhead" style="--cc:#e25c2c" tabindex="0">
+      <span class="land-dot"></span>Urbanisable
+      <span class="land-tip" role="tooltip"><strong>Urbanisable.</strong> Land that can be built on after a development process.</span>
+    </div>
     <div class="kpi kpi-main">
-      <div class="kpi-label">Urbanisable plots for sale</div>
       <div class="kpi-value">119<span class="kpi-arrow down" title="vs Sep">&#8600;</span></div>
       <div class="stat-comp">120 (Sep)</div>
     </div>
     <div class="kpi kpi-main">
-      <div class="kpi-label">Median price per m&sup2;</div>
       <div class="kpi-value">&euro;115<span class="kpi-unit">/m&sup2;</span></div>
       <div class="stat-delta flat">= vs Sep</div>
     </div>
     <div class="kpi kpi-main">
-      <div class="kpi-label">Median asking price</div>
       <div class="kpi-value">&euro;325k<span class="kpi-arrow up" title="vs Sep">&#8599;</span></div>
       <div class="stat-delta up">▲ +1.6% vs Sep</div>
     </div>
-    <div class="kpi kpi-sec kpi-sec-first">
-      <div class="kpi-label">Median plot size</div>
+    <div class="kpi kpi-sec">
       <div class="kpi-value">3,687<span class="kpi-unit">m&sup2;</span><span class="kpi-arrow up" title="vs Sep">&#8599;</span></div>
       <div class="stat-delta up">▲ +2.6% vs Sep</div>
     </div>
     <div class="kpi kpi-sec">
-      <div class="kpi-label">Price range</div>
       <div class="kpi-value">&euro;33k to &euro;4.1M</div>
     </div>
-  </div>
-  <div class="land-class-head" style="--cc:#6b7280"><span class="land-dot"></span>Rural
-    <span class="land-what">Agricultural or forest land, not for building.</span></div>
-  <div class="kpi-row land-kpis">
+    <div class="land-rowhead" style="--cc:#6b7280" tabindex="0">
+      <span class="land-dot"></span>Rural
+      <span class="land-tip" role="tooltip"><strong>Rural.</strong> Agricultural or forest land, not for building.</span>
+    </div>
     <div class="kpi kpi-main">
-      <div class="kpi-label">Rural plots for sale</div>
       <div class="kpi-value">231<span class="kpi-arrow down" title="vs Sep">&#8600;</span></div>
       <div class="stat-comp">238 (Sep)</div>
     </div>
     <div class="kpi kpi-main">
-      <div class="kpi-label">Median price per m&sup2;</div>
       <div class="kpi-value">&euro;10<span class="kpi-unit">/m&sup2;</span></div>
       <div class="stat-delta flat">= vs Sep</div>
     </div>
     <div class="kpi kpi-main">
-      <div class="kpi-label">Median asking price</div>
       <div class="kpi-value">&euro;55k</div>
       <div class="stat-delta flat">= vs Sep</div>
     </div>
-    <div class="kpi kpi-sec kpi-sec-first">
-      <div class="kpi-label">Median plot size</div>
+    <div class="kpi kpi-sec">
       <div class="kpi-value">6,812<span class="kpi-unit">m&sup2;</span><span class="kpi-arrow up" title="vs Sep">&#8599;</span></div>
       <div class="stat-delta up">▲ +5.3% vs Sep</div>
     </div>
     <div class="kpi kpi-sec">
-      <div class="kpi-label">Price range</div>
       <div class="kpi-value">&euro;8k to &euro;3.0M</div>
-    </div>
-  </div>
+    </div></div>
   <div class="land-note">Plots are counted once, even when several agencies advertise the same one. When the ads for one plot disagree on its class, the lowest class is used. 47 plots give no class and are left out of every figure.</div>
   <div class="section-tabs"><div class="section-tab land-tab active" data-target="land-insights" tabindex="0">Insights</div><div class="section-tab land-tab" data-target="land-history" tabindex="0">History</div><div class="section-tab land-tab" data-target="land-map" tabindex="0">Map</div><div class="section-tab land-tab" data-target="land-zones" tabindex="0">Zones</div><div class="section-tab land-tab" data-target="land-size" tabindex="0">Price & Size</div><div class="section-tab land-tab" data-target="land-agencies" tabindex="0">Agencies</div><div class="section-tab land-tab" data-target="land-changes" tabindex="0">Changes</div></div>
   <div class="section-intro-bubble land-bubble active" data-for="land-insights"><h3>Insights</h3><p>What the Mafra land market looks like this month, <strong>one class at a time</strong>.</p></div><div class="section-intro-bubble land-bubble" data-for="land-history"><h3>History</h3><p>Plots listed and median asking prices, <strong>month by month</strong>, since we started tracking all of Mafra in August 2026. Each class has its own charts, because they are different products.</p></div><div class="section-intro-bubble land-bubble" data-for="land-map"><h3>Map</h3><p>Every plot in <strong>Mafra</strong>, one class at a time, coloured by <strong>price per m&sup2;</strong> on that class's own scale. Hover for a photo, click to open the listing.</p></div><div class="section-intro-bubble land-bubble" data-for="land-zones"><h3>Zones</h3><p>Which zones ask the most per m&sup2;, <strong>within each class</strong>. Distance from the sea matters, but a zone's rank only means something against plots of the same class.</p></div><div class="section-intro-bubble land-bubble" data-for="land-size"><h3>Price &amp; Size</h3><p>Asking price against <strong>plot size</strong>, per class. Bigger plots cost more in total but less per m&sup2;.</p></div><div class="section-intro-bubble land-bubble" data-for="land-agencies"><h3>Agencies</h3><p>Who lists land. A few agencies hold <strong>most of the plots</strong>.</p></div><div class="section-intro-bubble land-bubble" data-for="land-changes"><h3>Changes</h3><p>What changed since last month: <strong>new</strong> plots, plots <strong>no longer online</strong> and <strong>price changes</strong>. Removed does not mean sold.</p></div>
