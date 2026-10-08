@@ -1300,7 +1300,7 @@
 <!-- ═══ Masthead ═══ -->
 <header class="masthead">
   <div class="mast-side">
-    <span class="mast-eyebrow">Updated Oct 08, 2026, 14:58</span>
+    <span class="mast-eyebrow">Updated Oct 08, 2026, 16:07</span>
     <span class="mast-note">435 homes for sale</span>
   </div>
   <div class="mast-centre">
@@ -1698,6 +1698,19 @@
       if (cd && cd[2]) window.open(cd[2], '_blank');
     });
   });
+  // Masthead: say "land" and "plots" while this tab is showing, restore it on leaving.
+  const note = document.querySelector('.mast-note'), title = document.querySelector('.mast-title');
+  if (note && title) {
+    const was = { note: note.textContent, title: title.textContent };
+    const now = { note: '618 plots for sale', title: 'Tracking Mafra’s land market' };
+    const sync = () => {
+      const on = root.style.display !== 'none';
+      note.textContent = on ? now.note : was.note;
+      title.textContent = on ? now.title : was.title;
+    };
+    new MutationObserver(sync).observe(root, { attributes: true, attributeFilter: ['style'] });
+    sync();
+  }
   root.querySelectorAll('.land-tab').forEach(tab => {
     tab.addEventListener('click', () => open(tab.dataset.target));
     tab.addEventListener('keydown', e => {
