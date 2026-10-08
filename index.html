@@ -1300,7 +1300,7 @@
 <!-- ═══ Masthead ═══ -->
 <header class="masthead">
   <div class="mast-side">
-    <span class="mast-eyebrow">Updated Oct 08, 2026, 16:30</span>
+    <span class="mast-eyebrow">Updated Oct 08, 2026, 16:35</span>
     <span class="mast-note">435 homes for sale</span>
   </div>
   <div class="mast-centre">
@@ -1546,14 +1546,16 @@
 <div id="terrenos" class="tab-content" style="display:none;">
   
 <style>
-  .land-grid { display:grid; grid-template-columns: 8.5rem repeat(4, minmax(8.5rem, 1fr)) minmax(12rem, 1.3fr);
-    column-gap:0; row-gap:0; padding:.55rem 2rem .4rem; align-items:stretch; overflow-x:auto; }
-  .land-grid > .kpi-label { padding:0 .6rem .35rem; border-bottom:1px solid var(--rule); }
-  .land-grid > .kpi { padding:.4rem .6rem .35rem; border-left:1px solid var(--hair); border-bottom:1px solid var(--hair); }
-  .land-grid > .land-rowhead { padding:.55rem .4rem 0 0; border-bottom:1px solid var(--hair); }
+  /* Same cell as the casas strip (.kpi: 0 .6rem, content width, hair separators), left-aligned,
+     with one extra first column for the class names. Columns are as wide as their content. */
+  .land-grid { display:grid; grid-template-columns: max-content repeat(5, max-content); justify-content:start;
+    padding:.6rem 2rem .5rem; align-items:stretch; overflow-x:auto; }
+  .land-grid > .kpi-label { padding:0 .6rem .3rem; border-bottom:1px solid var(--rule); white-space:nowrap; }
+  .land-grid > .kpi { padding:.35rem .6rem .3rem; border-left:1px solid var(--hair); border-bottom:1px solid var(--hair); }
+  .land-grid > .land-rowhead { padding:.5rem .5rem 0 0; border-bottom:1px solid var(--hair); }
   .land-kpis { padding-top:.35rem; padding-bottom:.4rem; }
   .land-rowhead { position:relative; display:flex; align-items:flex-start; gap:.5rem; cursor:help;
-    font-size:.82rem; font-weight:700; text-transform:uppercase; letter-spacing:.07em; color:#33373f; }
+    font-size:.75rem; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:#33373f; }
   .land-dot { width:.7rem; height:.7rem; border-radius:50%; background:var(--cc); display:inline-block; margin-top:.2rem; flex:none; }
   .land-tip { display:none; position:absolute; left:0; top:100%; z-index:80; width:15rem; padding:.55rem .7rem;
     background:#fff; border:1px solid var(--rule); box-shadow:0 4px 14px rgba(0,0,0,.12);
