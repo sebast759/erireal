@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://erireal.com/</loc><lastmod>2026-10-22</lastmod></url>
-  <url><loc>https://erireal.com/en/houses/</loc><lastmod>2026-10-22</lastmod></url>
-  <url><loc>https://erireal.com/en/land/</loc><lastmod>2026-10-22</lastmod></url>
-  <url><loc>https://erireal.com/en/rentals/</loc><lastmod>2026-10-22</lastmod></url>
-  <url><loc>https://erireal.com/en/areas/</loc><lastmod>2026-10-22</lastmod></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://erireal.com/</loc><lastmod>2026-10-23</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://erireal.com/"/><xhtml:link rel="alternate" hreflang="pt-PT" href="https://erireal.com/pt/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://erireal.com/"/></url>
+  <url><loc>https://erireal.com/en/houses/</loc><lastmod>2026-10-23</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://erireal.com/en/houses/"/><xhtml:link rel="alternate" hreflang="pt-PT" href="https://erireal.com/pt/casas/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://erireal.com/en/houses/"/></url>
+  <url><loc>https://erireal.com/en/land/</loc><lastmod>2026-10-23</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://erireal.com/en/land/"/><xhtml:link rel="alternate" hreflang="pt-PT" href="https://erireal.com/pt/terrenos/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://erireal.com/en/land/"/></url>
+  <url><loc>https://erireal.com/en/rentals/</loc><lastmod>2026-10-23</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://erireal.com/en/rentals/"/><xhtml:link rel="alternate" hreflang="pt-PT" href="https://erireal.com/pt/arrendamentos/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://erireal.com/en/rentals/"/></url>
+  <url><loc>https://erireal.com/en/areas/</loc><lastmod>2026-10-23</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://erireal.com/en/areas/"/><xhtml:link rel="alternate" hreflang="pt-PT" href="https://erireal.com/pt/zonas/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://erireal.com/en/areas/"/></url>
+  <url><loc>https://erireal.com/pt/</loc><lastmod>2026-10-23</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://erireal.com/"/><xhtml:link rel="alternate" hreflang="pt-PT" href="https://erireal.com/pt/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://erireal.com/"/></url>
+  <url><loc>https://erireal.com/pt/casas/</loc><lastmod>2026-10-23</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://erireal.com/en/houses/"/><xhtml:link rel="alternate" hreflang="pt-PT" href="https://erireal.com/pt/casas/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://erireal.com/en/houses/"/></url>
+  <url><loc>https://erireal.com/pt/terrenos/</loc><lastmod>2026-10-23</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://erireal.com/en/land/"/><xhtml:link rel="alternate" hreflang="pt-PT" href="https://erireal.com/pt/terrenos/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://erireal.com/en/land/"/></url>
+  <url><loc>https://erireal.com/pt/arrendamentos/</loc><lastmod>2026-10-23</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://erireal.com/en/rentals/"/><xhtml:link rel="alternate" hreflang="pt-PT" href="https://erireal.com/pt/arrendamentos/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://erireal.com/en/rentals/"/></url>
+  <url><loc>https://erireal.com/pt/zonas/</loc><lastmod>2026-10-23</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://erireal.com/en/areas/"/><xhtml:link rel="alternate" hreflang="pt-PT" href="https://erireal.com/pt/zonas/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://erireal.com/en/areas/"/></url>
   <url><loc>https://erireal.com/reports/</loc><lastmod>2026-10-22</lastmod></url>
   <url><loc>https://erireal.com/reports/2025-12/</loc><lastmod>2026-10-22</lastmod></url>
   <url><loc>https://erireal.com/reports/2026-01/</loc><lastmod>2026-10-22</lastmod></url>

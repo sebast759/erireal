@@ -6,6 +6,9 @@
 <title>Ericeira property prices: €5,000/m² (Oct 2026) | Erireal</title>
 <meta name="description" content="Ericeira property market, Oct 2026: median asking price €5,000/m² of Área Útil (living space) across 435 homes for sale. Asking prices, not sales.">
 <link rel="canonical" href="https://erireal.com/">
+<link rel="alternate" hreflang="en" href="https://erireal.com/">
+<link rel="alternate" hreflang="pt-PT" href="https://erireal.com/pt/">
+<link rel="alternate" hreflang="x-default" href="https://erireal.com/">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="author" content="Erireal">
 <meta property="og:type" content="website">
@@ -99,6 +102,22 @@
     font-size: 0.85rem; font-weight: 500; line-height: 1.3; color: #3f434b;
   }
   .mast-side.right { text-align: right; margin-left: auto; }
+  /* EN | PT control (present only once the Portuguese home page exists) */
+  header.masthead { position: relative; }
+  .lang-slot { z-index: 5; }
+  .lang-slot .langsw { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--sans);
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+  .lang-slot .cur { color: #33373f; }
+  .lang-slot .to { display: inline-flex; align-items: center; gap: 0.32rem; color: var(--accent); text-decoration: none; }
+  .lang-slot a.to:hover { text-decoration: underline; }
+  .lang-slot .to.off { cursor: default; }
+  .lang-slot .flag { display: block; width: 18px; height: 12px; border: 1px solid rgba(0,0,0,.28); border-radius: 1px; flex: none; }
+  .lang-slot.in-header { position: absolute; right: var(--pad); top: calc(50% + 0.7rem); }
+  .lang-slot.in-tabs { display: none; }
+  @media (max-width: 900px) {
+    .lang-slot.in-header { display: none; }
+    .lang-slot.in-tabs { display: inline-flex; align-items: center; }
+  }
   .mast-centre { text-align: center; min-width: 0; }
   /* the logo and the brand line go back to the Insights homepage */
   a.mast-home { color: inherit; text-decoration: none;
@@ -1356,7 +1375,7 @@
 <!-- ═══ Masthead ═══ -->
 <header class="masthead">
   <div class="mast-side">
-    <span class="mast-eyebrow">Updated Oct 22, 2026, 17:39</span>
+    <span class="mast-eyebrow">Updated Oct 23, 2026, 16:00</span>
     <span class="mast-note">435 homes for sale</span>
   </div>
   <div class="mast-centre">
@@ -1368,12 +1387,13 @@
   <div class="mast-side right">
     <span class="mast-eyebrow">Prices &middot; Supply &middot; Listings</span>
   </div>
+<div class="lang-slot in-header"><span class="langsw" role="group" aria-label="Language"><span class="cur" lang="en" title="English" aria-current="true">EN</span><a class="to" href="pt/" hreflang="pt-PT" lang="pt-PT" title="Português (Portugal)" aria-label="Português (Portugal)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20" width="18" height="12" focusable="false" aria-hidden="true" class="flag"><rect width="30" height="20" fill="#d71920"/><rect width="12" height="20" fill="#046a38"/><circle cx="12" cy="10" r="4.6" fill="none" stroke="#f9d71c" stroke-width="1.1"/><path d="M9.4 7.4h5.2v3.3c0 1.7-1.2 2.6-2.6 3.1-1.4-.5-2.6-1.4-2.6-3.1z" fill="#fff" stroke="#d71920" stroke-width=".7"/><circle cx="12" cy="10.2" r="1" fill="#2a4aa5"/></svg><span>PT</span></a></span></div>
 </header>
 <nav class="top-tabs">
   <div class="top-tab active" data-target="casas">Casas</div>
   <div class="top-tab" data-target="terrenos">Terrenos</div>
   <div class="top-tab" data-target="rentals">Rentals</div>
-  <div class="top-tab" data-target="about">About</div>
+  <div class="top-tab" data-target="about">About</div><div class="lang-slot in-tabs"><span class="langsw" role="group" aria-label="Language"><span class="cur" lang="en" title="English" aria-current="true">EN</span><a class="to" href="pt/" hreflang="pt-PT" lang="pt-PT" title="Português (Portugal)" aria-label="Português (Portugal)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20" width="18" height="12" focusable="false" aria-hidden="true" class="flag"><rect width="30" height="20" fill="#d71920"/><rect width="12" height="20" fill="#046a38"/><circle cx="12" cy="10" r="4.6" fill="none" stroke="#f9d71c" stroke-width="1.1"/><path d="M9.4 7.4h5.2v3.3c0 1.7-1.2 2.6-2.6 3.1-1.4-.5-2.6-1.4-2.6-3.1z" fill="#fff" stroke="#d71920" stroke-width=".7"/><circle cx="12" cy="10.2" r="1" fill="#2a4aa5"/></svg><span>PT</span></a></span></div>
   <a class="top-tab nav-near" href="near.html" id="nav-near">&#128205; Browse homes around you</a>
 </nav>
 
@@ -1668,12 +1688,12 @@
     padding:.6rem var(--pad) .5rem; align-items:stretch; overflow-x:auto; }
   .land-grid > .kpi-label { padding:0 .6rem .3rem; border-bottom:1px solid var(--rule); white-space:nowrap; }
   .land-grid > .kpi { padding:.35rem .6rem .3rem; border-left:1px solid var(--hair); border-bottom:1px solid var(--hair); }
-  .land-grid > .land-rowhead { padding:.5rem .5rem 0 0; border-bottom:1px solid var(--hair); }
+  .land-grid > .land-rowhead { padding:0 .5rem 0 0; border-bottom:1px solid var(--hair); }
   .land-ev { display:flex; flex-wrap:wrap; padding:.5rem 0 .6rem; }
-  .land-rowname { display:flex; align-items:flex-start; gap:.5rem; }
-  .land-rowhead { position:relative; display:flex; align-items:flex-start; gap:.5rem; cursor:help;
+  .land-rowname { display:flex; align-items:center; gap:.5rem; }
+  .land-rowhead { position:relative; display:flex; align-items:center; gap:.5rem; cursor:help;
     font-size:.75rem; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:#33373f; }
-  .land-dot { width:.7rem; height:.7rem; border-radius:50%; background:var(--cc); display:inline-block; margin-top:.2rem; flex:none; }
+  .land-dot { width:.7rem; height:.7rem; border-radius:50%; background:var(--cc); display:inline-block; margin-top:0; flex:none; }
   .land-tip { display:none; position:absolute; left:0; top:100%; z-index:80; width:15rem; padding:.55rem .7rem;
     background:#fff; border:1px solid var(--rule); box-shadow:0 4px 14px rgba(0,0,0,.12);
     font-size:.8rem; font-weight:400; text-transform:none; letter-spacing:0; line-height:1.4; color:#33373f; }
@@ -1682,7 +1702,7 @@
   @media (min-width: 1800px) {
     .land-grid { grid-template-columns: 0 repeat(5, max-content); }
     .land-grid > .land-rowhead { padding:0; border-bottom:none; overflow:visible; }
-    .land-rowname { position:absolute; right:.8rem; top:.55rem; display:flex; align-items:flex-start; gap:.5rem; white-space:nowrap; }
+    .land-rowname { position:absolute; right:.8rem; top:50%; transform:translateY(-50%); display:flex; align-items:center; gap:.5rem; white-space:nowrap; }
     .land-grid > .kpi-label:nth-child(2) { padding-left:0; }
     .land-grid > .kpi:nth-child(6n+2) { padding-left:0; border-left:none; }
     .land-tip { left:auto; right:0; top:1.6rem; }
@@ -1883,12 +1903,12 @@
     padding:.6rem var(--pad) .5rem; align-items:stretch; overflow-x:auto; }
   .land-grid > .kpi-label { padding:0 .6rem .3rem; border-bottom:1px solid var(--rule); white-space:nowrap; }
   .land-grid > .kpi { padding:.35rem .6rem .3rem; border-left:1px solid var(--hair); border-bottom:1px solid var(--hair); }
-  .land-grid > .land-rowhead { padding:.5rem .5rem 0 0; border-bottom:1px solid var(--hair); }
+  .land-grid > .land-rowhead { padding:0 .5rem 0 0; border-bottom:1px solid var(--hair); }
   .land-ev { display:flex; flex-wrap:wrap; padding:.5rem 0 .6rem; }
-  .land-rowname { display:flex; align-items:flex-start; gap:.5rem; }
-  .land-rowhead { position:relative; display:flex; align-items:flex-start; gap:.5rem; cursor:help;
+  .land-rowname { display:flex; align-items:center; gap:.5rem; }
+  .land-rowhead { position:relative; display:flex; align-items:center; gap:.5rem; cursor:help;
     font-size:.75rem; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:#33373f; }
-  .land-dot { width:.7rem; height:.7rem; border-radius:50%; background:var(--cc); display:inline-block; margin-top:.2rem; flex:none; }
+  .land-dot { width:.7rem; height:.7rem; border-radius:50%; background:var(--cc); display:inline-block; margin-top:0; flex:none; }
   .land-tip { display:none; position:absolute; left:0; top:100%; z-index:80; width:15rem; padding:.55rem .7rem;
     background:#fff; border:1px solid var(--rule); box-shadow:0 4px 14px rgba(0,0,0,.12);
     font-size:.8rem; font-weight:400; text-transform:none; letter-spacing:0; line-height:1.4; color:#33373f; }
@@ -1897,7 +1917,7 @@
   @media (min-width: 1800px) {
     .land-grid { grid-template-columns: 0 repeat(5, max-content); }
     .land-grid > .land-rowhead { padding:0; border-bottom:none; overflow:visible; }
-    .land-rowname { position:absolute; right:.8rem; top:.55rem; display:flex; align-items:flex-start; gap:.5rem; white-space:nowrap; }
+    .land-rowname { position:absolute; right:.8rem; top:50%; transform:translateY(-50%); display:flex; align-items:center; gap:.5rem; white-space:nowrap; }
     .land-grid > .kpi-label:nth-child(2) { padding-left:0; }
     .land-grid > .kpi:nth-child(6n+2) { padding-left:0; border-left:none; }
     .land-tip { left:auto; right:0; top:1.6rem; }
@@ -1924,8 +1944,8 @@
   /* same strip as casas and terrenos, with two groups of four figures: no hanging row names on wide screens */
   .land-grid.rent-grid > .rent-grp { grid-column: span 4; color:#2c4a9a; border-left:1px solid var(--hair); font-weight:700; }
   .land-grid.rent-grid > .kpi:nth-child(n) { padding:.35rem .6rem .3rem; border-left:1px solid var(--hair); }
-  .land-grid.rent-grid > .land-rowhead:nth-child(n) { padding:.5rem .5rem 0 0; border-bottom:1px solid var(--hair); }
-  .land-grid.rent-grid .land-rowname { position:static; }
+  .land-grid.rent-grid > .land-rowhead:nth-child(n) { padding:0 .5rem 0 0; border-bottom:1px solid var(--hair); }
+  .land-grid.rent-grid .land-rowname { position:static; transform:none; }
   .rent-table { border-collapse:collapse; font-size:.82rem; width:100%; }
   .rent-table th, .rent-table td { padding:.35rem .6rem; border-bottom:1px solid var(--hair); text-align:left; vertical-align:top; }
   .rent-table td.ev { color:#4a4f58; font-style:italic; max-width:28rem; }
