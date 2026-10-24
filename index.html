@@ -1375,7 +1375,7 @@
 <!-- ═══ Masthead ═══ -->
 <header class="masthead">
   <div class="mast-side">
-    <span class="mast-eyebrow">Updated Oct 23, 2026, 16:00</span>
+    <span class="mast-eyebrow">Updated Oct 24, 2026, 10:30</span>
     <span class="mast-note">435 homes for sale</span>
   </div>
   <div class="mast-centre">
@@ -2535,6 +2535,8 @@
     // else is success unless the page is Buttondown's own error page.
     if (r.redirected && /state=confirmed_subscription/.test(r.url)) return;
     const text = await r.text();
+    // A human-verification page ("Verify Your Subscription") means nothing was subscribed: never show it as a success.
+    if (/Verify Your Subscription/i.test(text)) throw new Error('The sign-up was not completed: the email service asked for a verification that cannot be shown here. Please try again, or subscribe at buttondown.com/erireal.');
     if (!/Subscription Error/i.test(text)) return;
     const m = text.match(/message-box--error"[^>]*>\s*([^<]+)/i);
     throw new Error(m ? m[1].trim() : 'Could not sign up. Please try again.');

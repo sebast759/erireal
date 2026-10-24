@@ -106,7 +106,7 @@ ul.related li{border-bottom:1px solid var(--hair);padding:.5rem 0}
 <figure class="spark"><svg viewBox="0 0 540 120" width="100%" role="img" aria-hidden="true" preserveAspectRatio="xMinYMid meet" xmlns="http://www.w3.org/2000/svg" style="display:block;overflow:visible;max-height:132px"><line x1="4" x2="506.1" y1="101.9" y2="101.9" stroke="#e3e6ec" stroke-width="1"/><path d="M4.0,26.1 L54.2,20.4 L104.4,39.5 L154.6,55.5 L204.9,55.5 L255.1,65.8 L305.3,57.0 L355.5,38.5 L405.7,47.7 L455.9,82.3 L506.1,89.5 L506.1,101.9 L4.0,101.9 Z" fill="#6b7280" fill-opacity="0.13" stroke="none"/><path d="M4.0,26.1 L54.2,20.4 L104.4,39.5 L154.6,55.5 L204.9,55.5 L255.1,65.8 L305.3,57.0 L355.5,38.5 L405.7,47.7 L455.9,82.3 L506.1,89.5" fill="none" stroke="#6b7280" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><circle cx="506.1" cy="89.5" r="3.7" fill="#6b7280"/><text x="512.1" y="94.5" font-size="14.4" font-weight="600" fill="#6b7280">435</text><text x="4" y="118.0" font-size="12.1" font-weight="500" fill="#4d525c">dez. 2025 <tspan font-weight="600" fill="#6b7280">558</tspan></text><text x="506.1" y="118.0" font-size="12.1" font-weight="500" fill="#4d525c" text-anchor="end">out. 2026</text></svg><figcaption>Casas à venda, de dez. 2025 a out. 2026.</figcaption></figure>
 <h2>Explore os mercados</h2>
 <ul class="related"><li><a href="../pt/casas/"><b>Casas</b></a> &middot; 435 casas à venda na Ericeira, 5.000 €/m² Área Útil, por quartos e zona.</li><li><a href="../pt/terrenos/"><b>Terrenos</b></a> &middot; 618 terrenos em Mafra; preço pedido mediano por m²: urbano 253 €, urbanizável 115 €, rústico 10 €.</li><li><a href="../pt/arrendamentos/"><b>Arrendamentos</b></a> &middot; Rendas na Ericeira: apartamentos 1.550 € por mês, casas 1.850 € por mês; arrendamentos sazonais à parte.</li><li><a href="../pt/zonas/"><b>Zonas</b></a> &middot; 18 zonas de Mafra comparadas: casas, rendas e terrenos urbanos lado a lado.</li></ul>
-<div class="signup"><h4 class="signup-heading">Receba a próxima atualização do mercado da Ericeira</h4><p class="signup-copy">Preços, oferta e evolução do mercado quando sair o próximo relatório mensal.</p><form class="contact-form signup-form" data-signup="home-pt"><label class="signup-label" for="signup-home-pt-email">Endereço de email</label><div class="signup-row"><input type="email" id="signup-home-pt-email" name="email" required autocomplete="email" placeholder="Endereço de email"><button type="submit">Receber a atualização</button></div><input type="text" name="_honey" class="cf-honey" tabindex="-1" autocomplete="off" aria-hidden="true"><p class="signup-note">Um email por mês. Cancele quando quiser. <a href="../#privacy" lang="en" hreflang="en">Privacidade (em inglês)</a>.</p><p class="signup-status" role="status" aria-live="polite"></p></form></div>
+<div class="signup"><h4 class="signup-heading">Receba a próxima atualização do mercado da Ericeira</h4><p class="signup-copy">Newsletter mensal em inglês sobre o mercado imobiliário da Ericeira.</p><form class="contact-form signup-form" data-signup="home-pt"><label class="signup-label" for="signup-home-pt-email">Endereço de email</label><div class="signup-row"><input type="email" id="signup-home-pt-email" name="email" required autocomplete="email" placeholder="Endereço de email"><button type="submit">Receber a atualização</button></div><input type="text" name="_honey" class="cf-honey" tabindex="-1" autocomplete="off" aria-hidden="true"><p class="signup-note">Um email por mês. Cancele quando quiser. <a href="../#privacy" lang="en" hreflang="en">Privacidade (em inglês)</a>.</p><p class="signup-status" role="status" aria-live="polite"></p></form></div>
 <div class="cta">O <a href="../#casas" lang="en">painel interativo</a> (interface em inglês) tem o mapa de todos os anúncios, os gráficos por zona, as análises por agência e o histórico completo.</div>
 <h2>Como ler estes números</h2>
 <p>Todos os valores são <b>preços pedidos</b>, retirados dos anúncios de casas à venda na freguesia da Ericeira, lidos uma vez por mês. Portugal não publica os preços de transação por imóvel, pelo que o que se consegue medir é o que os vendedores pedem, não o que os compradores pagaram. Usam-se medianas porque algumas casas muito caras distorceriam uma média. O tempo conta-se em meses, porque os dados são mensais.</p>
@@ -132,7 +132,7 @@ ul.related li{border-bottom:1px solid var(--hair);padding:.5rem 0}
       throw new Error('As subscrições ainda não estão abertas. Volte em breve.');
     }
     const body = 'email=' + encodeURIComponent(email)
-               + '&metadata__source=' + encodeURIComponent(NEWSLETTER_SOURCE) + '&tag=pt';
+               + '&metadata__source=' + encodeURIComponent(NEWSLETTER_SOURCE);
     const r = await fetch('https://buttondown.com/api/emails/embed-subscribe/' + NEWSLETTER_USERNAME, {
       method: 'POST',
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
@@ -149,6 +149,8 @@ ul.related li{border-bottom:1px solid var(--hair);padding:.5rem 0}
     // else is success unless the page is Buttondown's own error page.
     if (r.redirected && /state=confirmed_subscription/.test(r.url)) return;
     const text = await r.text();
+    // A human-verification page ("Verify Your Subscription") means nothing was subscribed: never show it as a success.
+    if (/Verify Your Subscription/i.test(text)) throw new Error('A subscrição não foi concluída: o serviço de email pediu uma verificação que não pode ser mostrada aqui. Tente novamente ou subscreva em buttondown.com/erireal.');
     if (!/Subscription Error/i.test(text)) return;
     const m = text.match(/message-box--error"[^>]*>\s*([^<]+)/i);
     throw new Error(m ? m[1].trim() : 'Não foi possível subscrever. Tente novamente.');
@@ -174,8 +176,8 @@ ul.related li{border-bottom:1px solid var(--hair);padding:.5rem 0}
       try {
         await subscribeToNewsletter(email);
         const box = form.closest('.gaz-signup, .site-signup-inner') || form.parentElement;
-        box.innerHTML = '<p class="signup-success">Subscrição registada. Enviamos-lhe um email '
-                       + 'quando sair a próxima atualização de mercado da Erireal.</p>';
+        box.innerHTML = '<p class="signup-success">Verifique o seu email '
+                       + 'para confirmar a subscrição.</p>';
       } catch (err) {
         status.textContent = err.message || 'Não foi possível subscrever. Tente novamente.';
         btn.disabled = false;
