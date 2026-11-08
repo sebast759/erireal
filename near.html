@@ -22,7 +22,8 @@
               box-shadow:0 2px 10px rgba(0,0,0,.12); }
   .titlebar b { font-size:.95rem; }
   .titlebar b { flex:none; }
-  .titlebar a { min-width:0; max-width:55%; color:var(--accent); text-decoration:none; text-align:right; line-height:1.2; padding:2px 0 2px 8px; }
+  .titlebar a { min-width:0; max-width:55%; color:#a84300; text-decoration:none; text-align:center; line-height:1.2; padding:5px 12px;
+                background:#ffe1c4; border:1px solid #f4b27a; border-radius:12px; }
   .titlebar a span { display:block; font-size:1rem; font-weight:700; }
   .titlebar a small { display:block; font-size:.68rem; color:var(--ink2); white-space:normal; }
   .chips { pointer-events:auto; display:flex; gap:7px; overflow-x:auto; padding:9px 2px 4px; scrollbar-width:none; }
@@ -30,6 +31,10 @@
   .chip { flex:none; border:1px solid var(--hair); background:var(--bg); color:var(--ink); border-radius:999px;
           padding:7px 14px; font:600 .82rem var(--sans); box-shadow:0 1px 5px rgba(0,0,0,.12); }
   .chip.on { background:var(--ink); color:var(--bg); border-color:var(--ink); }
+  .chip[data-t="land"] { background:#dcefd6; border-color:#a6cf9b; }
+  .chip[data-t="land"].on { background:#2e7d32; border-color:#2e7d32; color:#fff; }
+  .chip[data-t="rent"] { background:#d9e8f8; border-color:#9fc3ea; }
+  .chip[data-t="rent"].on { background:#1f6fc2; border-color:#1f6fc2; color:#fff; }
 
   .fab { position:absolute; z-index:500; right:12px; width:46px; height:46px; border-radius:50%; border:1px solid var(--hair);
          background:var(--bg); box-shadow:0 2px 10px rgba(0,0,0,.2); display:flex; align-items:center; justify-content:center; }
