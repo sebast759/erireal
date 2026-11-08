@@ -31,6 +31,14 @@
   /* A link to #terrenos / #rentals / #about: mark the page before it is drawn, so the Casas tab is never
      flashed first. The page script clears the mark once it has opened the tab (see routeFromHash). */
   (function () {
+    /* Phones open the mobile map directly. "Full site" on that page links here with ?full=1, which is remembered
+       for the visit. Never for search-engine or preview bots, and never for deep links (#terrenos, #rentals...). */
+    try {
+      if (/[?&]full=1/.test(location.search)) sessionStorage.setItem('erireal-full', '1');
+      var phone = window.matchMedia('(max-width: 700px) and (pointer: coarse)').matches;
+      var bot = /bot|crawl|spider|slurp|lighthouse|facebookexternalhit|whatsapp|preview/i.test(navigator.userAgent);
+      if (phone && !bot && !location.hash && !sessionStorage.getItem('erireal-full')) { location.replace('near.html'); return; }
+    } catch (e) {}
     var h = location.hash.slice(1).toLowerCase();
     if (h === 'terrenos' || h === 'rentals' || h === 'about') document.documentElement.setAttribute('data-start', h);
   })();
@@ -1592,7 +1600,7 @@
 <!-- ═══ Masthead ═══ -->
 <header class="masthead">
   <div class="mast-side">
-    <span class="mast-eyebrow">Updated Nov 08, 2026, 16:27</span>
+    <span class="mast-eyebrow">Updated Nov 08, 2026, 16:28</span>
     <span class="mast-note">425 properties for sale</span>
   </div>
   <div class="mast-centre">

@@ -21,7 +21,9 @@
               background:var(--bg); border:1px solid var(--hair); border-radius:14px; padding:9px 14px;
               box-shadow:0 2px 10px rgba(0,0,0,.12); }
   .titlebar b { font-size:.95rem; }
-  .titlebar a { font-size:.8rem; color:var(--accent); text-decoration:none; white-space:nowrap; }
+  .titlebar a { color:var(--accent); text-decoration:none; text-align:right; line-height:1.2; padding:2px 0 2px 8px; }
+  .titlebar a span { display:block; font-size:1rem; font-weight:700; }
+  .titlebar a small { display:block; font-size:.68rem; color:var(--ink2); }
   .chips { pointer-events:auto; display:flex; gap:7px; overflow-x:auto; padding:9px 2px 4px; scrollbar-width:none; }
   .chips::-webkit-scrollbar { display:none; }
   .chip { flex:none; border:1px solid var(--hair); background:var(--bg); color:var(--ink); border-radius:999px;
@@ -90,7 +92,7 @@
 <div id="map"></div>
 
 <div class="topbar">
-  <div class="titlebar"><b id="ttl">Homes around you</b><a id="back" href="./">Full site</a></div>
+  <div class="titlebar"><b id="ttl">Homes around you</b><a id="back" href="./?full=1"><span>Full site</span><small>made for larger screens</small></a></div>
   <div class="chips" id="types"></div>
   <div class="chips" id="chips" style="padding-top:0"></div>
 </div>
@@ -113,7 +115,7 @@ const LO = 2500, HI = 5000;
 const TILE_OPACITY = 0.75;
 const NEAR_KM = 25;      // beyond this, GPS is treated as "not in Ericeira"
 
-if (location.protocol === 'file:') document.getElementById('back').href = 'dashboard.html';
+if (location.protocol === 'file:') document.getElementById('back').href = 'dashboard.html?full=1';
 
 const CLS = { Urban: '#2c7be5', Urbanisable: '#e25c2c', Rural: '#6b7280' };
 const SCALE = { home: [LO, HI], rent: [8, 20] };
